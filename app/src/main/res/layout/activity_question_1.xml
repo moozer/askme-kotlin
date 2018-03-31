@@ -20,6 +20,7 @@
         tools:text="masser af text" />
 
     <RadioGroup
+        android:id="@+id/radio_group"
         android:layout_width="match_parent"
         android:layout_height="251dp"
         android:layout_alignParentStart="true"
@@ -73,6 +74,6 @@
         android:text="Button"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp"
-        tools:text="ennu mere tekst" />
+        tools:text="Submit" />
 
 </RelativeLayout>
