@@ -2,16 +2,9 @@ package world.my.moz.askme
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
 import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_question_1.*
-import org.jetbrains.anko.alert
-import org.jetbrains.anko.noButton
 import org.jetbrains.anko.toast
-import org.jetbrains.anko.yesButton
-
 
 
 class Question_1 : AppCompatActivity() {
@@ -21,36 +14,37 @@ class Question_1 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question_1)
 
-        //val buttonAccept = findViewById<Button>(R.id.button_accept)
-        //val textQuestion = findViewById<TextView>(R.id.text_question)
-        //val radioGroup = findViewById<RadioGroup>(R.id.radio_group)
+        val page:Int = intent.getIntExtra("Page", -1)
+
 
         val radioButtonList = listOf(
-            findViewById<RadioButton>(R.id.radio_1),
-            findViewById<RadioButton>(R.id.radio_2),
-            findViewById<RadioButton>(R.id.radio_3),
-            findViewById<RadioButton>(R.id.radio_4),
-            findViewById<RadioButton>(R.id.radio_5)
+                findViewById<RadioButton>(R.id.radio_1),
+                findViewById<RadioButton>(R.id.radio_2),
+                findViewById<RadioButton>(R.id.radio_3),
+                findViewById<RadioButton>(R.id.radio_4),
+                findViewById<RadioButton>(R.id.radio_5)
         )
 
+
         // set dynamic labels
-        text_question.text = MyApp.Question_1
-        for( i:Int in 0..4) {
-            radioButtonList[i].text = MyApp.Options_1[i]
+        text_question.text = Questions.Qs.get(page).question
+        for (i: Int in 0..4) {
+            radioButtonList[i].text = Questions.Qs.get(page).options!![i]
         }
 
-        radio_group.setOnCheckedChangeListener( { _, _ ->
+        radio_group.setOnCheckedChangeListener({ _, _ ->
             val selectedId = radio_group.getCheckedRadioButtonId()
             val button = findViewById<RadioButton>(selectedId)
-            MyApp.Answer_1 = radio_group.indexOfChild(button)
+            Questions.As[page] = radio_group.indexOfChild(button)
         })
 
         button_accept.setOnClickListener({
-            alert("Testing alerts") {
-                title = "Alert"
-                yesButton { toast("Yess: i is " + MyApp.Answer_1) }
-                noButton { }
-            }.show()
+            if( Questions.As[page] < 0)
+                toast("Please select something first")
+            else {
+                toast("Selected " + Questions.As[page])
+                finish()
+            }
         })
 
     }

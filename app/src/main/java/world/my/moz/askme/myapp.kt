@@ -4,7 +4,7 @@ import android.app.Application
 
 class MyApp : Application() {
 
-    companion object sharedData {
+/*    companion object sharedData {
         val Question_1 = "How tired were you this morning?"
         val Options_1 = listOf( "No probs",
                 "Slept fine, fresh",
@@ -14,5 +14,5 @@ class MyApp : Application() {
 
         var Answer_1 = -1
     }
-
+*/
 }
