@@ -37,7 +37,6 @@ class Question_1 : AppCompatActivity() {
         text_question.text = MyApp.Question_1
         for( i:Int in 0..4) {
             radioButtonList[i].text = MyApp.Options_1[i]
-            //radioButtonList[i].setOnClickListener {  }
         }
 
         radio_group.setOnCheckedChangeListener( { _, _ ->
@@ -55,39 +54,5 @@ class Question_1 : AppCompatActivity() {
         })
 
     }
-/*
-    fun getButtonNumber( radioId:Int ) : Int {
-        val radioSelected = findViewById<RadioButton>(radioId)
 
-        for( i in 0..4 )
-            if( radioSelected == this.radioButtonList[i])
-                return i
-
-        return -1
-    }*/
-
-/*    fun addListenerOnButton() {
-
-        radioSexGroup = findViewById(R.id.radioSex) as RadioGroup
-        btnDisplay = findViewById(R.id.btnDisplay) as Button
-
-        btnDisplay.setOnClickListener(object : OnClickListener() {
-
-            fun onClick(v: View) {
-
-                // get selected radio button from radioGroup
-                val selectedId = radioSexGroup.getCheckedRadioButtonId()
-
-                // find the radiobutton by returned id
-                radioSexButton = findViewById<View>(selectedId) as RadioButton
-
-                Toast.makeText(this@MyAndroidAppActivity,
-                        radioSexButton.getText(), Toast.LENGTH_SHORT).show()
-
-            }
-
-        })
-
-    }
-    */
 }
